@@ -1,0 +1,2 @@
+Put approved, public .xlsx result files in this folder, then list each in ../results-data.js.
+Do not put confidential student data into public Excel files.

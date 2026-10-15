@@ -1,203 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#052f7e" />
-  <title>YSCDS Book of World Records</title>
-  <meta name="description" content="YSCDS Book of World Records — A Unit of Youth Sports and Cultural Development Society." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#081a35">
+  <meta name="description" content="Explore YSCDS cultural events, student Silambam performances, classical dance, traditional music, achievements, awards and published Excel results.">
+  <title>YSCDS | Youth, Culture & Achievements</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="assets/records/results-data.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="#home"><img src="assets/images/logo.png" alt="YSCDS logo"><span><b>YSCDS</b><small>BOOK OF WORLD RECORDS</small></span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
-      <nav class="main-nav" id="mainNav">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#heritage">Silambam</a><a href="#records">Categories</a><a href="#leaders">Leadership</a><a href="#process">Apply</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
-        <a href="#nominate" class="nav-cta">Nominate a Record</a>
-      </nav>
+    <div class="header-shell container-wide">
+      <a href="#home" class="brand" aria-label="YSCDS home"><img src="assets/images/logo.png" width="52" height="52" alt="YSCDS logo"><span><strong>YSCDS</strong><small>YOUTH SPORTS &amp; CULTURAL<br>DEVELOPMENT SOCIETY</small></span></a>
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#home" class="active">Home</a><a href="#about">About</a><a href="#silambam">Silambam</a><a href="#events">Events</a><a href="#achievements">Achievements</a><a href="#gallery">Gallery</a><a href="#leadership">Leadership</a><a href="#contact">Contact</a></nav>
+      <a href="#excel-results" class="excel-cta desktop-excel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h11l5 5v13H4z"/><path d="M15 3v5h5M8 12l5 6m0-6-5 6"/></svg><span>Excel Results</span><span aria-hidden="true">↗</span></a>
+      <button class="mobile-menu-toggle" id="menuToggle" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" inert>
+      <a href="#home">Home</a><a href="#about">About YSCDS</a><a href="#silambam">Silambam</a><a href="#events">Event Highlights</a><a href="#achievements">Achievements &amp; Awards</a><a href="#gallery">Photo Gallery</a><a href="#leadership">Leadership</a><a href="#journey">Record Journey</a><a href="#contact">Contact</a><a class="mobile-excel" href="#excel-results">Excel Results ↗</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero-slider video-hero" id="home">
-      <article class="hero-slide active" data-video-slide>
-        <video class="hero-video" muted autoplay playsinline loop preload="metadata" poster="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=2200&q=90">
-          <source src="https://videos.pexels.com/video-files/8611711/8611711-hd_1920_1080_25fps.mp4" type="video/mp4">
-        </video>
-        <div class="hero-shade"></div><div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
-        <div class="container hero-content"><div class="hero-kicker"><i></i> HERITAGE • DISCIPLINE • RECORDS</div><h1>Talent deserves more than applause. <span>It deserves history.</span></h1><p>YSCDS Book of World Records recognises extraordinary achievement in sports, Silambam, arts, culture, education, innovation and social impact.</p><div class="hero-actions"><a class="btn btn-primary" href="#records">Explore Records ↗</a><a class="btn btn-glass" href="#nominate">Nominate Achievement</a></div><div class="hero-proof"><span><b>YSCDS</b> Institutional Initiative</span><span><b>6+</b> Recognition Areas</span><span><b>5-Step</b> Review Journey</span></div></div>
-      </article>
-      <article class="hero-slide" data-video-slide>
-        <video class="hero-video" muted autoplay playsinline loop preload="metadata" poster="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=2200&q=90">
-          <source src="https://videos.pexels.com/video-files/37451675/37451675-hd_1920_1080_30fps.mp4" type="video/mp4">
-        </video>
-        <div class="hero-shade"></div><div class="container hero-content"><div class="hero-kicker"><i></i> SPORT • PERFORMANCE • EXCELLENCE</div><h1>From practice to podium, <span>every milestone matters.</span></h1><p>A powerful recognition platform for individuals, teams, academies, schools, colleges and organisations.</p><div class="hero-actions"><a class="btn btn-primary" href="#process">How Recognition Works ↗</a><a class="btn btn-glass" href="#leaders">Our Leadership</a></div></div>
-      </article>
-      <article class="hero-slide" data-video-slide>
-        <video class="hero-video" muted autoplay playsinline loop preload="metadata" poster="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=2200&q=90">
-          <source src="https://videos.pexels.com/video-files/20559017/20559017-hd_1920_1080_30fps.mp4" type="video/mp4">
-        </video>
-        <div class="hero-shade"></div><div class="container hero-content"><div class="hero-kicker"><i></i> ART • CULTURE • IDENTITY</div><h1>Preserving heritage. <span>Celebrating expression.</span></h1><p>Traditional arts and contemporary achievements come together in one premium platform built to inspire the next generation.</p><div class="hero-actions"><a class="btn btn-primary" href="#heritage">Explore Heritage ↗</a><a class="btn btn-glass" href="#gallery">See Highlights</a></div></div>
-      </article>
-      <article class="hero-slide" data-video-slide>
-        <video class="hero-video" muted autoplay playsinline loop preload="metadata" poster="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=2200&q=90">
-          <source src="https://videos.pexels.com/video-files/7868390/7868390-hd_1920_1080_25fps.mp4" type="video/mp4">
-        </video>
-        <div class="hero-shade"></div><div class="container hero-content"><div class="hero-kicker"><i></i> YOUTH • IDEAS • FUTURE</div><h1>Recognising the people who <span>create what comes next.</span></h1><p>Celebrate academic brilliance, innovation, teamwork, creative thinking and meaningful contribution to society.</p><div class="hero-actions"><a class="btn btn-primary" href="#nominate">Start a Nomination ↗</a><a class="btn btn-glass" href="#about">Discover YSCDS</a></div></div>
-      </article>
-      <button class="hero-arrow hero-prev" aria-label="Previous slide">←</button><button class="hero-arrow hero-next" aria-label="Next slide">→</button>
-      <div class="hero-dots" aria-label="Hero slider navigation"></div>
-      <div class="sound-chip"><span>●</span> CINEMATIC VIDEO EXPERIENCE</div>
-      <div class="hero-bottom container"><div><b>A Unit of</b><span>Youth Sports and Cultural Development Society</span></div><div><b>Registered Under</b><span>TN Societies Registration Act, 1975</span></div></div>
-    </section>
-
-    <section class="ticker"><div class="ticker-track"><span>WORLD RECORDS</span><b>✦</b><span>SILAMBAM</span><b>✦</b><span>SPORTS</span><b>✦</b><span>ARTS</span><b>✦</b><span>CULTURE</span><b>✦</b><span>EDUCATION</span><b>✦</b><span>YOUTH TALENT</span><b>✦</b><span>INNOVATION</span><b>✦</b><span>WORLD RECORDS</span><b>✦</b><span>SILAMBAM</span><b>✦</b><span>SPORTS</span><b>✦</b><span>ARTS</span><b>✦</b></div></section>
-
-    <section class="numbers section-padding">
-      <div class="container stats-grid reveal">
-        <article><span>01</span><strong class="counter" data-target="6" data-pad="2">00</strong><p>Core Record Areas</p></article>
-        <article><span>02</span><strong class="counter" data-target="5" data-pad="2">00</strong><p>Record Journey Steps</p></article>
-        <article><span>03</span><strong class="counter" data-target="8" data-pad="2">00</strong><p>Leadership Positions</p></article>
-        <article><span>04</span><strong class="counter" data-target="1975">0</strong><p>Societies Registration Act</p></article>
+  <main id="main">
+    <section class="hero" id="home" aria-label="Featured YSCDS events">
+      <div class="hero-visuals" id="heroVisuals">
+        <div class="hero-image is-active" style="background-image:url('assets/images/events/silambam-students-in-action.webp');background-position:center 49%" role="img" aria-label="Students participating in Silambam practice"></div>
+        <div class="hero-image" style="background-image:url('assets/images/events/classical-dance-stage.webp');background-position:center 42%" role="img" aria-label="Young dancers performing in traditional costume"></div>
+        <div class="hero-image" style="background-image:url('assets/images/events/traditional-nadaswaram-ensemble.webp');background-position:center 40%" role="img" aria-label="Traditional Nadaswaram musicians performing together"></div>
+        <div class="hero-image" style="background-image:url('assets/images/events/silambam-aerial-gathering.webp');background-position:center 51%" role="img" aria-label="Aerial view of a large youth cultural event"></div>
+      </div>
+      <div class="hero-tint"></div>
+      <div class="container-wide hero-content">
+        <div class="hero-copy" id="heroCopy" aria-live="polite"><span class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> YOUTH • CULTURE • HERITAGE</span><h1>Tradition <br>in <em>Motion.</em></h1><p>Young hands. Living traditions.</p><a class="button button-orange" href="#events">Explore Events <span aria-hidden="true">↗</span></a></div>
+        <button class="hero-nav hero-prev" type="button" aria-label="Previous hero photograph">←</button>
+        <button class="hero-nav hero-next" type="button" aria-label="Next hero photograph">→</button>
+        <div class="hero-bottom"><div class="hero-indicators" id="heroIndicators" aria-label="Choose a hero slide"><button type="button" class="selected" aria-label="View Silambam slide" aria-current="true"></button><button type="button" aria-label="View Dance slide"></button><button type="button" aria-label="View Music slide"></button><button type="button" aria-label="View Cultural event slide"></button></div><div class="hero-photo-note">REAL MOMENTS. REAL CULTURE.</div></div>
       </div>
     </section>
 
-    <section class="impact-strip section-padding-mini">
-      <div class="container impact-grid reveal">
-        <div><small>OUR PURPOSE</small><h3>Identify</h3><p>Discover remarkable talent and unique achievements.</p></div><div><small>OUR PROCESS</small><h3>Verify</h3><p>Review evidence with a structured recognition journey.</p></div><div><small>OUR PROMISE</small><h3>Celebrate</h3><p>Give achievers a platform worthy of their milestone.</p></div>
-      </div>
-    </section>
+    <div class="culture-strip" aria-label="YSCDS cultural focuses"><div class="culture-strip-inner"><span>YOUTH EMPOWERMENT</span><i>✳</i><span>SILAMBAM</span><i>✳</i><span>CLASSICAL DANCE</span><i>✳</i><span>TRADITIONAL MUSIC</span><i>✳</i><span>CULTURAL HERITAGE</span><i>✳</i><span>YOUTH EMPOWERMENT</span><i>✳</i><span>SILAMBAM</span><i>✳</i><span>CLASSICAL DANCE</span><i>✳</i><span>TRADITIONAL MUSIC</span></div></div>
 
-    <section class="about section-padding" id="about">
-      <div class="container split-grid">
-        <div class="about-visual reveal">
-          <div class="about-photo main"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=88" alt="Community and youth event"></div>
-          <div class="about-photo small"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silamba_attam.jpg" alt="Silambam tradition"></div>
-          <div class="about-badge"><img src="assets/images/logo.png" alt="YSCDS"><span>A UNIT OF<br><b>YSCDS</b></span></div>
-        </div>
-        <div class="section-copy reveal delay-1">
-          <div class="section-tag">ABOUT US</div><h2>Recognition with <span>purpose, culture & credibility.</span></h2>
-          <p class="lead">YSCDS Book of World Records is a dedicated initiative of the Youth Sports and Cultural Development Society.</p>
-          <p>Our platform is designed to identify, document and celebrate exceptional achievements while encouraging youth participation in sports, arts, culture, education, innovation and social contribution.</p>
-          <div class="feature-pills"><span>✓ Structured Review</span><span>✓ Diverse Categories</span><span>✓ Youth Focus</span><span>✓ Cultural Heritage</span></div>
-          <a class="text-link" href="#process">See the recognition journey →</a>
-        </div>
-      </div>
-    </section>
+    <section class="intro-section section-space" id="about"><div class="container-wide intro-layout">
+      <div class="intro-media"><img src="assets/images/events/cultural-programme-group.webp" alt="Cultural programme participants and organisers at a group event" loading="lazy"><div class="intro-stamp"><span>ROOTED IN</span><b>CULTURE</b><span>DRIVEN BY YOUTH</span></div></div>
+      <div class="intro-copy"><span class="eyebrow">ABOUT YSCDS</span><h2>Where young talent meets <span>living heritage.</span></h2><p>YSCDS Book of World Records is an initiative of the Youth Sports and Cultural Development Society. We bring attention to meaningful accomplishments and the traditions that shape them.</p><p>From Silambam practice grounds to dance stages, community music and student milestones, our event photographs reflect the energy of people learning, performing and celebrating together.</p><div class="intro-values"><div><span class="value-icon">01</span><b>Preserve</b><small>Keep traditional practices visible to future generations.</small></div><div><span class="value-icon">02</span><b>Encourage</b><small>Support participation, learning and confidence.</small></div><div><span class="value-icon">03</span><b>Document</b><small>Share events and confirmed achievements responsibly.</small></div></div><a href="#journey" class="text-link">Explore our recognition approach <span>↗</span></a></div>
+    </div></section>
 
-    <section class="heritage section-padding" id="heritage">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="section-tag light">TAMIL HERITAGE SPOTLIGHT</div><h2>Silambam — tradition in <span>motion.</span></h2></div><p>A visual tribute to Tamil Nadu’s traditional martial-art heritage and the discipline, coordination and cultural pride it represents.</p></div>
-        <div class="heritage-slider reveal" id="heritageSlider">
-          <article class="heritage-slide active"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silambam_in_tamilnadu.jpg" alt="Silambam practitioners"><div><small>SILAMBAM • TAMIL NADU</small><h3>Strength shaped by discipline.</h3><p>Traditional practice creates a powerful bridge between heritage, fitness and youth development.</p></div></article>
-          <article class="heritage-slide"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silamba_attam.jpg" alt="Silambam performance"><div><small>HERITAGE • PERFORMANCE</small><h3>Culture that moves with every strike.</h3><p>Silambam combines technique, rhythm, focus and physical coordination in a distinctive traditional form.</p></div></article>
-          <article class="heritage-slide"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silabam_group_event.jpg" alt="Silambam group event"><div><small>COMMUNITY • YOUTH</small><h3>Passing tradition to the next generation.</h3><p>Group training and events help young participants connect achievement with cultural identity.</p></div></article>
-          <div class="heritage-controls"><button id="heritagePrev">←</button><div class="heritage-dots"></div><button id="heritageNext">→</button></div>
-        </div>
-      </div>
-    </section>
+    <section class="activities-section section-space"><div class="container-wide"><div class="section-heading"><div><span class="eyebrow">OUR CULTURAL ACTIVITIES</span><h2>Many art forms. <span>One shared pride.</span></h2></div><p>Real performances, real participation and real moments from the YSCDS photo collection.</p></div>
+      <div class="activity-grid"><a class="activity-card activity-feature" href="#silambam"><img src="assets/images/events/silambam-student-drill.webp" alt="Students practicing Silambam with traditional staffs" loading="lazy"><div class="activity-layer"><span>01 / TRADITIONAL MARTIAL ART</span><h3>Silambam</h3><p>Practice, coordination and confidence.</p><span class="round-arrow" aria-hidden="true">↗</span></div></a><a class="activity-card" href="#gallery" data-gallery-link="Dance"><img src="assets/images/events/classical-dance-stage.webp" alt="Young classical dancers performing on a stage" loading="lazy"><div class="activity-layer"><span>02 / CLASSICAL ARTS</span><h3>Dance</h3><span class="round-arrow" aria-hidden="true">↗</span></div></a><a class="activity-card" href="#gallery" data-gallery-link="Music"><img src="assets/images/events/traditional-drum-procession.webp" alt="Traditional drummers performing outdoors" loading="lazy"><div class="activity-layer"><span>03 / SOUND OF TRADITION</span><h3>Music &amp; Folk Arts</h3><span class="round-arrow" aria-hidden="true">↗</span></div></a></div>
+    </div></section>
 
-    <section class="experience section-padding">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="section-tag">A LIVING CULTURE</div><h2>More than a record book — <span>an experience.</span></h2></div><p>Premium visual storytelling brings sports, heritage, culture and youth achievement into one immersive identity.</p></div>
-        <div class="experience-grid">
-          <article class="exp-card exp-large reveal"><img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1600&q=90" alt="sports field"><div class="exp-overlay"><span>SPORTS & ENDURANCE</span><h3>Performance that pushes limits.</h3><a href="#records">Explore sports records →</a></div></article>
-          <article class="exp-card reveal delay-1"><img src="https://images.pexels.com/photos/14828329/pexels-photo-14828329.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Silambam martial arts"><div class="exp-overlay"><span>SILAMBAM</span><h3>Heritage in motion.</h3></div></article>
-          <article class="exp-card reveal delay-2"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=90" alt="community achievement"><div class="exp-overlay"><span>COMMUNITY IMPACT</span><h3>Achievement with meaning.</h3></div></article>
-        </div>
-      </div>
-    </section>
+    <section class="silambam-section section-space" id="silambam"><div class="container-wide silambam-layout"><div class="silambam-copy"><span class="eyebrow">TAMIL HERITAGE / SILAMBAM</span><h2>Skill in every movement. <span>Heritage in every hand.</span></h2><p>Silambam is a traditional Tamil martial art grounded in rhythm, alertness, balance and control. Students build discipline through regular practice and organised group demonstrations.</p><div class="mini-points"><div><span>✦</span> Traditional skills passed between generations</div><div><span>✦</span> Group practice and coordinated demonstrations</div><div><span>✦</span> Community participation across age groups</div></div><a href="#gallery" class="button button-outline-dark" data-gallery-link="Silambam">View Silambam Photos ↗</a></div><div class="silambam-photo"><img src="assets/images/events/silambam-aerial-performance.webp" alt="Aerial view of students performing Silambam in formation" loading="lazy"><span class="photo-corner-label">SILAMBAM / GROUP DEMONSTRATION</span></div></div></section>
 
-    <section class="categories section-padding" id="records">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="section-tag">RECORD CATEGORIES</div><h2>Every achievement has <span>a category.</span></h2></div><p>Six broad areas make it easier for applicants to identify the right pathway for their achievement.</p></div>
-        <div class="category-grid">
-          <article class="category-card reveal"><div class="cat-no">01</div><div class="cat-icon">⚡</div><h3>Sports Records</h3><p>Skill, endurance, speed, team and individual sporting achievements.</p><a href="#nominate">Nominate →</a></article>
-          <article class="category-card reveal delay-1"><div class="cat-no">02</div><div class="cat-icon">✺</div><h3>Arts & Culture</h3><p>Music, dance, Silambam, traditional arts and cultural performance.</p><a href="#nominate">Nominate →</a></article>
-          <article class="category-card reveal delay-2"><div class="cat-no">03</div><div class="cat-icon">⌘</div><h3>Education</h3><p>Academic, knowledge, learning and institutional achievements.</p><a href="#nominate">Nominate →</a></article>
-          <article class="category-card reveal"><div class="cat-no">04</div><div class="cat-icon">◇</div><h3>Innovation</h3><p>Creative concepts, technology, inventions and problem solving.</p><a href="#nominate">Nominate →</a></article>
-          <article class="category-card reveal delay-1"><div class="cat-no">05</div><div class="cat-icon">☀</div><h3>Social Impact</h3><p>Community initiatives, public service and meaningful contribution.</p><a href="#nominate">Nominate →</a></article>
-          <article class="category-card reveal delay-2"><div class="cat-no">06</div><div class="cat-icon">★</div><h3>Youth Talent</h3><p>Exceptional young achievers across skill, creativity and performance.</p><a href="#nominate">Nominate →</a></article>
-        </div>
-      </div>
-    </section>
+    <section class="events-section section-space" id="events"><div class="container-wide"><div class="section-heading section-heading-light"><div><span class="eyebrow">EVENT HIGHLIGHTS</span><h2>Moments worth <span>remembering.</span></h2></div><p>Culture grows when people gather, practice and celebrate. Explore glimpses of the events and communities in our collection.</p></div><div class="event-scroll" id="eventScroll">
+      <article class="event-card"><div class="event-card-image"><img src="assets/images/events/silambam-aerial-gathering.webp" alt="A large outdoor gathering of Silambam participants" loading="lazy"></div><span class="event-type">SILAMBAM / YOUTH</span><h3>Strength in numbers</h3><p>A broad view of students taking part in a coordinated outdoor demonstration.</p></article>
+      <article class="event-card"><div class="event-card-image"><img src="assets/images/events/classical-dance-group.webp" alt="Classical dance students presenting traditional poses" loading="lazy"></div><span class="event-type">DANCE / CULTURE</span><h3>Dance across generations</h3><p>Young dancers express tradition through costume, posture and performance.</p></article>
+      <article class="event-card"><div class="event-card-image"><img src="assets/images/events/folk-percussion-festival.webp" alt="Folk drummers taking part in a public event" loading="lazy"></div><span class="event-type">FOLK MUSIC / COMMUNITY</span><h3>The rhythm of celebration</h3><p>Traditional percussion brings movement and energy to community gatherings.</p></article>
+      <article class="event-card"><div class="event-card-image"><img src="assets/images/events/decorative-cultural-procession.webp" alt="Students carrying colourful traditional procession decorations" loading="lazy"></div><span class="event-type">HERITAGE / PROCESSION</span><h3>Colours of tradition</h3><p>Decorative displays and youth participation add vibrancy to cultural processions.</p></article>
+      <article class="event-card"><div class="event-card-image"><img src="assets/images/events/folk-tiger-costumes.webp" alt="Two folk performers in tiger costumes" loading="lazy"></div><span class="event-type">FOLK ARTS / PERFORMANCE</span><h3>Stories in costume</h3><p>Folk characters and performance traditions create memorable moments for young audiences.</p></article>
+      </div><div class="rail-controls"><span>SWIPE OR SCROLL TO EXPLORE</span><div><button type="button" id="eventPrev" aria-label="Scroll event highlights left">←</button><button type="button" id="eventNext" aria-label="Scroll event highlights right">→</button></div></div></div></section>
 
-    <section class="audience section-padding">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="section-tag">WHO CAN APPLY</div><h2>Open to achievers at <span>every level.</span></h2></div><p>A simple starting point for individuals and institutions that want to present a remarkable achievement for review.</p></div>
-        <div class="audience-grid reveal"><article><b>01</b><h3>Individuals</h3><p>Personal achievements, skills and milestone attempts.</p></article><article><b>02</b><h3>Teams</h3><p>Group performances and collective achievements.</p></article><article><b>03</b><h3>Schools & Colleges</h3><p>Student and institutional achievements.</p></article><article><b>04</b><h3>Organisations</h3><p>Community, cultural and social initiatives.</p></article></div>
-      </div>
-    </section>
+    <section class="awards-section section-space" id="achievements"><div class="container-wide"><div class="section-heading"><div><span class="eyebrow">RECOGNITION &amp; ACHIEVEMENTS</span><h2>Awards. Certificates. <span>Proud moments.</span></h2></div><p>Celebrating documented moments of recognition, students, communities and the people who encourage their progress.</p></div>
+      <div class="award-grid"><button class="award-card award-large" type="button" data-open-image="community-awards" aria-label="Open award event photograph"><img src="assets/images/events/community-awards.webp" alt="Trophies displayed at a community award gathering" loading="lazy"><span class="award-label">AWARD MOMENTS <b>Event recognition</b></span><span class="award-expand">↗</span></button><button class="award-card" type="button" data-open-image="family-award-recognition" aria-label="Open certificate presentation photograph"><img src="assets/images/events/family-award-recognition.webp" alt="Family group displaying a framed award certificate and trophy" loading="lazy"><span class="award-label">CERTIFICATES <b>Achievement celebrated</b></span><span class="award-expand">↗</span></button><button class="award-card" type="button" data-open-image="community-recognition-stage" aria-label="Open stage recognition photograph"><img src="assets/images/events/community-recognition-stage.webp" alt="Recognition presentation on a cultural programme stage" loading="lazy"><span class="award-label">ON THE STAGE <b>Community recognition</b></span><span class="award-expand">↗</span></button><button class="award-card" type="button" data-open-image="college-recognition-event" aria-label="Open college event photograph"><img src="assets/images/events/college-recognition-event.webp" alt="Group at a stage programme in Yadava College" loading="lazy"><span class="award-label">EVENT MILESTONES <b>Sharing success</b></span><span class="award-expand">↗</span></button></div>
+      <div class="awards-note"><span aria-hidden="true">✧</span><p>Photographs document recognition moments. Specific record titles, award details, dates and verification status will be added only when confirmed.</p><a href="#excel-results">Explore Excel Results ↗</a></div>
+    </div></section>
 
-    <section class="leaders section-padding" id="leaders">
-      <div class="container">
-        <div class="section-head dark-head reveal"><div><div class="section-tag light">OUR LEADERSHIP</div><h2>People behind the <span>purpose.</span></h2></div><p>A committed society leadership supporting youth empowerment, culture, arts, sports and meaningful achievement.</p></div>
-        <div class="team-title reveal"><h3>YSCDS Leadership</h3><div class="slider-controls"><button id="teamPrev">←</button><button id="teamNext">→</button></div></div>
-        <div class="team-slider" id="teamSlider">
-          <article class="team-card"><img src="assets/images/president-radhika.jpeg" alt="Mrs. M. Radhika"><div><span>President</span><h4>Mrs. M. Radhika</h4></div></article>
-          <article class="team-card"><img src="assets/images/secretary-senthilgam.jpeg" alt="Mr. S. Senthilgam"><div><span>Secretary</span><h4>Mr. S. Senthilgam</h4></div></article>
-          <article class="team-card"><img src="assets/images/joint-secretary-thangapandi.jpeg" alt="Mr. D. Thangapandi"><div><span>Joint Secretary</span><h4>Mr. D. Thangapandi</h4></div></article>
-          <article class="team-card"><img src="assets/images/treasurer-muthupandi.jpeg" alt="Mr. S. Muthupandi"><div><span>Treasurer</span><h4>Mr. S. Muthupandi</h4></div></article>
-          <article class="team-card"><img src="assets/images/legal-advisor-vasantharaja.jpeg" alt="Adv. T. Vasantharaja"><div><span>Legal Advisor</span><h4>Adv. T. Vasantharaja</h4></div></article>
-          <article class="team-card"><img src="assets/images/executive-sirajsikkandar.jpeg" alt="Mr. M. Siraj Sikkandar"><div><span>Executive Member</span><h4>Mr. M. Siraj Sikkandar</h4></div></article>
-          <article class="team-card no-photo"><div class="member-placeholder"><b>NA</b><small>Portrait to be added</small></div><div><span>Executive Member</span><h4>Mr. N. Arjun Raj</h4></div></article>
-          <article class="team-card no-photo"><div class="member-placeholder"><b>VM</b><small>Portrait to be added</small></div><div><span>Executive Member</span><h4>Mr. Varun Muthuraj</h4></div></article>
-        </div>
-      </div>
-    </section>
+    <section class="gallery-section section-space" id="gallery"><div class="container-wide"><div class="section-heading gallery-heading"><div><span class="eyebrow">CULTURAL PHOTO ARCHIVE</span><h2>Every frame tells <span>a story.</span></h2></div><p>Browse real photographs from student performances, folk art, cultural gatherings and recognition events.</p></div><div class="gallery-tools"><div class="filter-strip" id="galleryFilters" role="group" aria-label="Filter photos"><button class="filter-btn active" type="button" data-filter="All" aria-pressed="true">All</button><button class="filter-btn" type="button" data-filter="Silambam" aria-pressed="false">Silambam</button><button class="filter-btn" type="button" data-filter="Dance" aria-pressed="false">Dance</button><button class="filter-btn" type="button" data-filter="Music" aria-pressed="false">Music &amp; Folk</button><button class="filter-btn" type="button" data-filter="Events" aria-pressed="false">Events</button><button class="filter-btn" type="button" data-filter="Awards" aria-pressed="false">Awards</button></div><label class="gallery-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.3 4.3"/></svg><span class="sr-only">Search photo descriptions</span><input id="gallerySearch" type="search" placeholder="Search photos" autocomplete="off"></label></div><div class="gallery-featured" id="galleryFeatured" aria-label="Auto-rotating featured gallery photographs"><button type="button" class="featured-visual" id="featuredOpen" aria-label="Open featured photograph"><img id="featuredImage" src="assets/images/events/silambam-students-in-action.webp" alt="Students performing Silambam" loading="lazy"><span class="featured-shade"></span><span class="featured-copy"><small id="featuredCategory">SILAMBAM</small><strong id="featuredTitle">Student Silambam practice</strong><span>Open photo ↗</span></span></button><div class="featured-controls"><div class="featured-position"><span>FEATURED PHOTO</span><b id="featuredIndex">01 / 22</b></div><div class="featured-buttons"><button type="button" id="featuredPrev" aria-label="Previous featured photograph">←</button><button type="button" id="featuredPause" aria-label="Pause featured gallery">Ⅱ</button><button type="button" id="featuredNext" aria-label="Next featured photograph">→</button></div></div></div><div class="gallery-count" id="galleryCount" aria-live="polite">Explore our photo collection</div><div class="gallery-grid" id="galleryGrid"></div><div class="gallery-action"><button class="button button-outline-dark" type="button" id="showMoreGallery">Show More Photos <span aria-hidden="true">↓</span></button></div></div></section>
 
-    <section class="why section-padding">
-      <div class="container why-grid"><div class="why-copy reveal"><div class="section-tag">WHY CHOOSE YSCDS</div><h2>A clear pathway from <span>achievement to recognition.</span></h2><p>Built to keep the applicant journey clear while supporting structured evidence collection and review.</p><a class="btn btn-primary" href="#nominate">Start a Nomination</a></div><div class="why-list"><article class="reveal"><b>01</b><div><h3>Structured Verification</h3><p>Submissions can include supporting documents, images, videos and witness details.</p></div></article><article class="reveal"><b>02</b><div><h3>Diverse Categories</h3><p>Sports, culture, arts, education, innovation, youth talent and social impact.</p></div></article><article class="reveal"><b>03</b><div><h3>Youth Empowerment</h3><p>Encouraging confidence, participation and positive role models.</p></div></article><article class="reveal"><b>04</b><div><h3>Institutional Foundation</h3><p>A dedicated initiative under the Youth Sports and Cultural Development Society.</p></div></article></div></div>
-    </section>
+    <section class="journey-section section-space" id="journey"><div class="container-wide"><div class="section-heading"><div><span class="eyebrow">HOW RECORDS ARE DOCUMENTED</span><h2>From effort to <span>recognition.</span></h2></div><p>A clear five-stage approach to documenting a meaningful achievement.</p></div><div class="journey-list"><div class="journey-step"><span>01</span><div class="step-symbol">◎</div><h3>Identify</h3><p>Describe the achievement and its context.</p></div><div class="journey-step"><span>02</span><div class="step-symbol">▤</div><h3>Document</h3><p>Gather relevant evidence and details.</p></div><div class="journey-step"><span>03</span><div class="step-symbol">⌕</div><h3>Review</h3><p>Check information against applicable criteria.</p></div><div class="journey-step"><span>04</span><div class="step-symbol">✓</div><h3>Confirm</h3><p>Record the verified outcome clearly.</p></div><div class="journey-step"><span>05</span><div class="step-symbol">★</div><h3>Celebrate</h3><p>Share approved achievements and memories.</p></div></div><div class="journey-info">Good documentation may include event dates, participant details, photographs, video evidence and independent confirmation where relevant. Recognition is subject to review and should not be assumed from participation alone.</div></div></section>
 
-    <section class="recognition section-padding">
-      <div class="container recognition-wrap reveal">
-        <div class="recognition-copy"><div class="section-tag light">THE RECOGNITION EXPERIENCE</div><h2>Make the achievement feel <span>as special as the journey.</span></h2><p>Successful record recognitions can be presented through an official listing experience, achievement story, certificate-style recognition and event spotlight.</p><div class="recognition-points"><span>Digital Record Listing</span><span>Achievement Story</span><span>Recognition Certificate</span><span>Event Spotlight</span></div><a class="btn btn-white" href="#nominate">Begin Nomination ↗</a></div>
-        <div class="recognition-media"><img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1200&q=90" alt="trophy recognition"><div class="float-card"><b>WORLD RECORD</b><span>Recognition • Legacy • Inspiration</span></div></div>
-      </div>
-    </section>
+    <section class="leaders-section section-space" id="leadership"><div class="container-wide"><div class="section-heading"><div><span class="eyebrow">OUR LEADERSHIP</span><h2>People behind <span>the purpose.</span></h2></div><p>The team supporting youth development, sports, culture and meaningful community achievement.</p></div><div class="leader-grid">
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/president-radhika.jpeg" alt="Portrait of Mrs. M. Radhika" loading="lazy"></div><div class="leader-meta"><span>PRESIDENT</span><h3>Mrs. M. Radhika</h3></div></article>
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/secretary-senthilgam.jpeg" alt="Portrait of Mr. S. Senthilgam" loading="lazy"></div><div class="leader-meta"><span>SECRETARY</span><h3>Mr. S. Senthilgam</h3></div></article>
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/joint-secretary-thangapandi.jpeg" alt="Portrait of Mr. D. Thangapandi" loading="lazy"></div><div class="leader-meta"><span>JOINT SECRETARY</span><h3>Mr. D. Thangapandi</h3></div></article>
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/treasurer-muthupandi.jpeg" alt="Portrait of Mr. S. Muthupandi" loading="lazy"></div><div class="leader-meta"><span>TREASURER</span><h3>Mr. S. Muthupandi</h3></div></article>
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/legal-advisor-vasantharaja.jpeg" alt="Portrait of Adv. T. Vasantharaja" loading="lazy"></div><div class="leader-meta"><span>LEGAL ADVISOR</span><h3>Adv. T. Vasantharaja</h3></div></article>
+      <article class="leader-card"><div class="leader-photo"><img src="assets/images/executive-sirajsikkandar.jpeg" alt="Portrait of Mr. M. Siraj Sikkandar" loading="lazy"></div><div class="leader-meta"><span>EXECUTIVE MEMBER</span><h3>Mr. M. Siraj Sikkandar</h3></div></article>
+      <article class="leader-card">
+  <div class="leader-photo">
+    <img
+      src="assets/images/arunraj.jpeg"
+      alt="Portrait of Mr. N. Arjun Raj"
+      loading="lazy"
+    >
+  </div>
+  <div class="leader-meta">
+    <span>EXECUTIVE MEMBER</span>
+    <h3>Mr. N. Arjun Raj</h3>
+  </div>
+</article>
 
-    <section class="process section-padding" id="process">
-      <div class="container"><div class="section-head reveal"><div><div class="section-tag">RECORD JOURNEY</div><h2>Five steps from attempt to <span>recognition.</span></h2></div><p>A simple visual path for each nomination.</p></div><div class="process-line reveal"><article><div class="step"><span>01</span>↗</div><h3>Nominate</h3><p>Submit applicant and achievement details.</p></article><article><div class="step"><span>02</span>▣</div><h3>Evidence</h3><p>Add relevant documents, photos and videos.</p></article><article><div class="step"><span>03</span>⌕</div><h3>Verify</h3><p>Review the information against relevant criteria.</p></article><article><div class="step"><span>04</span>✓</div><h3>Approve</h3><p>Qualified submissions proceed to confirmation.</p></article><article><div class="step"><span>05</span>🏆</div><h3>Recognise</h3><p>Celebrate and document the achievement.</p></article></div></div>
-    </section>
+<article class="leader-card">
+  <div class="leader-photo">
+    <img
+      src="assets/images/varun.jpeg"
+      alt="Portrait of Mr. Varun Muthuraj"
+      loading="lazy"
+    >
+  </div>
+  <div class="leader-meta">
+    <span>EXECUTIVE MEMBER</span>
+    <h3>Mr. Varun Muthuraj</h3>
+  </div>
+</article>
+      </div></div></section>
 
-    <section class="evidence section-padding">
-      <div class="container evidence-grid"><div class="evidence-copy reveal"><div class="section-tag light">PREPARE YOUR SUBMISSION</div><h2>What makes a strong <span>record application?</span></h2><p>Applicants can prepare clear evidence before submitting their nomination.</p><a href="#nominate" class="btn btn-white">Nominate Your Record ↗</a></div><div class="evidence-cards reveal delay-1"><article><i>01</i><h3>Clear Description</h3><p>Explain exactly what was achieved.</p></article><article><i>02</i><h3>Photo / Video Proof</h3><p>Provide visual evidence where relevant.</p></article><article><i>03</i><h3>Witness Details</h3><p>Add independent witness information if applicable.</p></article><article><i>04</i><h3>Supporting Documents</h3><p>Include certificates, logs or other relevant records.</p></article></div></div>
-    </section>
+    <section class="results-section section-space" id="excel-results"><div class="container-wide"><div class="results-shell"><div class="results-intro"><span class="eyebrow">PUBLISHED RECORDS</span><h2>Excel <span>Results.</span></h2><p>Officially approved lists can be made available here as Excel files. Results are added to the site's code and hosted as static files—no online form or account is required.</p><div class="result-points"><span>✓ Code-managed records</span><span>✓ Excel downloads when published</span><span>✓ No public upload</span></div></div><div class="result-panel"><div class="result-panel-head"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h11l5 5v13H4z"/><path d="M15 3v5h5M8 12l5 6m0-6-5 6"/></svg> RESULTS ARCHIVE</span><span class="panel-live-dot" title="Entries appear when published"></span></div><div id="resultsList" class="results-list" aria-live="polite"><div class="result-empty"><span>▤</span><h3>Results will appear here</h3><p>No Excel result files have been published yet.</p></div></div></div></div></div></section>
 
-    <section class="gallery section-padding" id="gallery">
-      <div class="container"><div class="section-head reveal"><div><div class="section-tag">VISUAL STORIES</div><h2>Sport, culture, youth <span>& achievement.</span></h2></div><p>Online visuals are used here as placeholders until official YSCDS event photography is added.</p></div><div class="masonry"><figure class="reveal tall"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silambam_in_tamilnadu.jpg" alt="Silambam"><figcaption>Silambam Heritage</figcaption></figure><figure class="reveal"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1100&q=85" alt="Sports"><figcaption>Sports Excellence</figcaption></figure><figure class="reveal"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1100&q=85" alt="Arts"><figcaption>Arts & Culture</figcaption></figure><figure class="reveal wide"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1500&q=85" alt="Youth"><figcaption>Youth Empowerment</figcaption></figure><figure class="reveal"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Silabam_group_event.jpg" alt="Silambam group event"><figcaption>Traditional Sport</figcaption></figure><figure class="reveal"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1100&q=85" alt="Community"><figcaption>Community Recognition</figcaption></figure></div></div>
-    </section>
+    <section class="faq-section section-space"><div class="container-wide faq-layout"><div><span class="eyebrow">QUICK ANSWERS</span><h2>Good to <span>know.</span></h2><p>Useful information about the photos, recognition process and future result updates.</p></div><div class="faq-list"><details><summary>Are the photographs from real events? <span>+</span></summary><p>Yes. The cultural and event photographs used on this website were provided as part of the YSCDS photo collection. Captions describe visible activities without inventing record titles or dates.</p></details><details><summary>Where can I find published Excel results? <span>+</span></summary><p>Select “Excel Results” in the navigation. Approved Excel files will be listed there once added by the website owner.</p></details><details><summary>Does every event photo represent a world record? <span>+</span></summary><p>No. Photos of students, performances and celebrations document activities. A record claim requires separate evidence and confirmation.</p></details><details><summary>How do I reach the society? <span>+</span></summary><p>Use the contact details below to ask about events, cultural activities or records. You can also use the floating social links.</p></details></div></div></section>
 
-    <section class="stories section-padding">
-      <div class="container"><div class="section-head reveal"><div><div class="section-tag">WHY IT MATTERS</div><h2>A platform built for <span>lasting recognition.</span></h2></div><p>Every record is more than a number. It represents dedication, identity, skill and a story worth documenting.</p></div>
-        <div class="story-grid"><article class="story-card reveal"><b>01</b><h3>Inspire Others</h3><p>Your achievement can encourage students, athletes and creators to aim higher.</p></article><article class="story-card reveal delay-1"><b>02</b><h3>Preserve Legacy</h3><p>Document meaningful milestones so they continue beyond the moment.</p></article><article class="story-card reveal delay-2"><b>03</b><h3>Build Visibility</h3><p>Create a credible platform to present talent, discipline and impact.</p></article></div>
-      </div>
-    </section>
-
-    <section class="faq section-padding">
-      <div class="container faq-grid"><div class="faq-intro reveal"><div class="section-tag">QUICK ANSWERS</div><h2>Before you <span>nominate.</span></h2><p>Common questions applicants may have before starting the recognition process.</p></div><div class="faq-list reveal delay-1">
-        <details open><summary>Who can apply for a YSCDS record?</summary><p>Individuals, teams, schools, colleges, academies, institutions and organisations can submit achievements for consideration.</p></details>
-        <details><summary>What kind of proof may be required?</summary><p>Depending on the achievement, applicants may be asked for photos, videos, witness information, identity details and supporting documents.</p></details>
-        <details><summary>Can traditional arts such as Silambam be recognised?</summary><p>Yes. Sports, traditional arts, cultural performance and other qualifying achievement areas can be considered through the relevant category.</p></details>
-        <details><summary>Is the website ready for online applications?</summary><p>The current version is a static presentation website. The nomination form can later be connected to email, WhatsApp or a backend workflow.</p></details>
-      </div></div>
-    </section>
-
-    <section class="nominate section-padding" id="nominate"><div class="container nominate-card reveal"><div><div class="section-tag light">YOUR RECORD STARTS HERE</div><h2>Have you achieved something extraordinary?</h2><p>Individuals, teams, schools, colleges and organisations can begin a record nomination.</p></div><a href="#contact" class="btn btn-white">Nominate a Record ↗</a></div></section>
-
-    <section class="contact section-padding" id="contact">
-      <div class="container contact-grid"><div class="reveal"><div class="section-tag">CONNECT WITH YSCDS</div><h2>Ready to be <span>recognised?</span></h2><p>For record nominations, society enquiries, partnerships and event information, connect with the YSCDS team.</p><div class="contact-list"><a href="tel:+919790203566"><small>CALL US</small><strong>+91 97902 03566</strong></a><a href="tel:+919894847003"><small>ALTERNATE</small><strong>+91 98948 47003</strong></a><a href="mailto:yscdsindia@gmail.com"><small>EMAIL</small><strong>yscdsindia@gmail.com</strong></a></div></div><form class="contact-form reveal delay-1" onsubmit="return false;"><div class="form-row"><label>Full Name<input type="text" placeholder="Your name"></label><label>Phone<input type="tel" placeholder="Your number"></label></div><label>Email Address<input type="email" placeholder="name@example.com"></label><label>Record Category<select><option>Choose a category</option><option>Sports</option><option>Arts & Culture / Silambam</option><option>Education</option><option>Innovation</option><option>Social Impact</option><option>Youth Talent</option></select></label><label>Tell us about your achievement<textarea rows="4" placeholder="Describe the achievement briefly..."></textarea></label><button class="btn btn-primary form-btn" type="button">Submit Enquiry ↗</button><small class="form-note">Static demo form. Backend / WhatsApp integration can be connected after approval.</small></form></div>
-    </section>
+    <section class="contact-section section-space" id="contact"><div class="container-wide contact-layout"><div><span class="eyebrow">GET IN TOUCH</span><h2>Keep culture <span>moving forward.</span></h2><p>For community programmes, event documentation, youth participation and official record enquiries, connect with the YSCDS team.</p><a href="mailto:yscdsindia@gmail.com?subject=YSCDS%20Website%20Enquiry" class="button button-orange">Email YSCDS <span>↗</span></a></div><div class="contact-cards"><a href="tel:+919790203566" class="contact-card"><span>PRIMARY CONTACT</span><b>+91 97902 03566</b><span class="contact-arrow">↗</span></a><a href="tel:+919894847003" class="contact-card"><span>ALTERNATE CONTACT</span><b>+91 98948 47003</b><span class="contact-arrow">↗</span></a><a href="mailto:yscdsindia@gmail.com" class="contact-card"><span>EMAIL ADDRESS</span><b>yscdsindia@gmail.com</b><span class="contact-arrow">↗</span></a></div></div></section>
   </main>
 
-  <footer><div class="container footer-grid"><div class="footer-brand"><img src="assets/images/logo.png" alt="YSCDS"><h3>YSCDS BOOK OF<br>WORLD RECORDS</h3><p>A Unit of Youth Sports and Cultural Development Society</p></div><div><h4>Explore</h4><a href="#about">About</a><a href="#heritage">Silambam</a><a href="#records">Categories</a><a href="#leaders">Leadership</a></div><div><h4>Apply</h4><a href="#process">Record Process</a><a href="#nominate">Nominate a Record</a><a href="#contact">Contact</a></div><div><h4>Follow YSCDS</h4><p>@yscds.india</p><p>Facebook · Instagram · YouTube</p><p>WhatsApp</p></div></div><div class="container footer-bottom"><span>© 2026 YSCDS Book of World Records. All Rights Reserved. · Online visual media: Pexels / Unsplash</span><a href="#top">Back to top ↑</a></div></footer>
-  <script src="script.js"></script>
+  <footer class="footer"><div class="container-wide"><div class="footer-top"><div class="footer-brand"><img src="assets/images/logo.png" alt="YSCDS logo" loading="lazy"><div><b>YSCDS</b><p>Book of World Records<br>A Unit of Youth Sports and Cultural Development Society</p></div></div><div class="footer-links"><div><span>DISCOVER</span><a href="#about">About</a><a href="#silambam">Silambam</a><a href="#events">Events</a><a href="#gallery">Gallery</a></div><div><span>EXPLORE</span><a href="#achievements">Achievements</a><a href="#excel-results">Excel Results</a><a href="#leadership">Leadership</a><a href="#contact">Contact</a></div></div></div><div class="footer-bottom"><span>© <span id="currentYear">2026</span> YSCDS. All rights reserved.</span><span>Preserving culture. Inspiring youth.</span><a href="#home">Back to top ↑</a></div></div></footer>
+
+  <div class="floating-social" aria-label="Social links"><a class="float-whatsapp" href="https://wa.me/919790203566" target="_blank" rel="noopener noreferrer" aria-label="Message YSCDS using WhatsApp" title="WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2a12.8 12.8 0 0 0-11 19.4L3.3 29l6.6-1.7A12.8 12.8 0 1 0 16 3.2Zm0 23.3a10.4 10.4 0 0 1-5.3-1.4l-.4-.3-4 1.1 1.1-3.9-.3-.4A10.4 10.4 0 1 1 16 26.5Zm5.8-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-2.6-3.4-3.2-.2-.3 0-.5.2-.7.2-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.3c.2.2 2.3 3.5 5.5 4.9 2.7 1.2 3.2 1 3.8.9.6-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.2-.3-.3-.6-.5Z"/></svg></a><a class="float-instagram" href="https://www.instagram.com/yscds.india/" target="_blank" rel="noopener noreferrer" aria-label="YSCDS Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a></div>
+
+  <dialog id="imageDialog" class="image-dialog" aria-label="Photo viewer"><button class="lightbox-close" type="button" id="lightboxClose" aria-label="Close photo viewer">×</button><div class="lightbox-stage"><button class="lightbox-arrow" id="lightboxPrev" type="button" aria-label="Previous photo">←</button><figure><img id="lightboxImage" alt=""><figcaption><b id="lightboxTitle"></b><span id="lightboxCaption"></span></figcaption></figure><button class="lightbox-arrow" id="lightboxNext" type="button" aria-label="Next photo">→</button></div></dialog>
 </body>
 </html>
