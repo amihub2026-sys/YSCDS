@@ -59,7 +59,7 @@
     { eyebrow: 'YOUTH • CULTURE • HERITAGE', h1: 'Tradition <br>in <em>Motion.</em>', subtitle: 'Young hands. Living traditions.', action: 'Explore Events', href: '#events' },
     { eyebrow: 'CLASSICAL DANCE • YOUNG TALENT', h1: 'Culture <br>in <em>Colour.</em>', subtitle: 'The next generation takes the stage.', action: 'View Dance Photos', href: '#gallery', category: 'Dance' },
     { eyebrow: 'TRADITIONAL MUSIC • CELEBRATION', h1: 'Rhythms <br>of <em>Heritage.</em>', subtitle: 'Sounds that bring communities together.', action: 'Explore Music', href: '#gallery', category: 'Music' },
-    { eyebrow: 'SILAMBAM • STUDENT PARTICIPATION', h1: 'Together <br>we <em>Grow.</em>', subtitle: 'One tradition. Many young hands.', action: 'See Silambam', href: '#silambam' }
+    { eyebrow: 'SILAMBAM • STUDENT PARTICIPATION', h1: 'Together <br>we <em>Grow.</em>', subtitle: 'One tradition. Many young hands.', action: 'See Silambam Photos', href: '#gallery', category: 'Silambam' }
   ];
   const heroImages = qa('.hero-image');
   const heroDots = qa('#heroIndicators button');
@@ -113,8 +113,10 @@
     ['traditional-nadaswaram-ensemble', 'Nadaswaram ensemble', 'Music', 'Musicians performing on traditional wind instruments'],
     ['silambam-aerial-gathering', 'A gathering in motion', 'Silambam', 'Aerial view of a large-scale group demonstration'],
     ['family-award-recognition', 'A proud certificate moment', 'Awards', 'A family displaying recognition certificates and a trophy'],
-    ['traditional-drum-procession', 'Drums of tradition', 'Music', 'Traditional drummers performing together outdoors'],
     ['classical-dance-group', 'Traditional dance portraits', 'Dance', 'Young dancers presenting coordinated classical poses'],
+    
+['classical-dance-group2.jpg', 'Traditional Dance Performance', 'Dance', 'Young dancers presenting coordinated classical poses'],
+
     ['community-recognition-stage', 'Stage recognition', 'Awards', 'Participants at a cultural recognition event'],
     ['decorative-cultural-procession', 'A vibrant cultural procession', 'Events', 'Students with colourful decorations in a public procession'],
     ['folk-tiger-costumes', 'Folk performance characters', 'Events', 'Performers in tiger-inspired folk costumes'],
@@ -122,15 +124,38 @@
     ['folk-percussion-festival', 'Folk percussion event', 'Music', 'Outdoor performance with folk percussion instruments'],
     ['college-recognition-event', 'College gathering', 'Awards', 'Recognition-related programme on a college stage'],
     ['students-percussion-training', 'The next rhythm', 'Music', 'Students with drums during a training session'],
+    ['folk1.jpg', 'Karakattam', 'Music', 'Musicians performing on traditional wind instruments'],
+    ['folk2.jpg', 'Traditional Folk Drummers', 'Music', 'Musicians performing on traditional wind instruments'],
+    ['folk3.jpg', 'Cultural Performance', 'Events', 'Musicians performing on traditional wind instruments'],
+    ['folk4.jpg', 'Youth Folk Arts Performance', 'Events', 'Musicians performing on traditional wind instruments'],
+        ['event1.jpg', 'Traditional Folk Face Art', 'Events', 'Colourful facial makeup representing Tamil folk traditions'],
+    ['event2.jpg', 'Behind the Folk Performance', 'Events', 'An artist preparing traditional makeup before a cultural performance.'],
+    ['event3.jpg', 'Traditional Folk Deity Performance', 'Events', 'A performer portraying a traditional deity-inspired character with expressive makeup.'],
+
     ['silambam-aerial-performance', 'Aerial Silambam formation', 'Silambam', 'Participants arranged across an outdoor demonstration space'],
     ['cultural-programme-group', 'Cultural programme team', 'Events', 'Performers and organisers gathered for a group photograph'],
     ['folk-stage-celebration', 'Folk stage celebration', 'Events', 'Traditional performing artists gathered on a decorated stage'],
     ['sports-event-volunteers', 'People behind the event', 'Events', 'Event representatives seated at a venue'],
     ['community-awards', 'Trophies and celebrations', 'Awards', 'Awards displayed at a community event venue'],
+     ['award1.jpg', 'Trophies and celebrations', 'Awards', 'Awards displayed at a community event venue'],
+      ['award2.jpg', 'Trophies and celebrations', 'Awards', 'Awards displayed at a community event venue'],
     ['silambam-cultural-movement', 'Silambam and movement', 'Silambam', 'Students demonstrating traditional skills during a cultural programme'],
     ['community-portrait-one', 'Community portrait 01', 'People', 'Portrait provided in the YSCDS collection; name and role pending confirmation'],
     ['community-portrait-two', 'Community portrait 02', 'People', 'Portrait provided in the YSCDS collection; name and role pending confirmation']
-  ].map(([id, title, category, description]) => ({ id, title, category, description, src: folder + id + '.webp' }));
+      
+
+].map(([id, title, category, description]) => ({
+  id,
+  title,
+  category,
+  description,
+  src: folder + (
+    /\.(jpg|jpeg|png|webp)$/i.test(id)
+      ? id
+      : id + '.webp'
+  )
+}));
+
   // Auto-rotating featured gallery photo; synchronized with current filter/search.
   let featuredIndex = 0;
   let featuredTimer = null;
@@ -221,6 +246,27 @@
   });
   renderGallery();
 
+  // Book of World Records: show poster first, then navigate only after closing.
+  const recordDialog = q('#recordPosterDialog');
+  const recordClose = q('#recordPosterClose');
+  const recordTarget = q('#world-records');
+
+  qa('a[href="#world-records"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      if (mobileMenu.classList.contains('is-open')) closeMenu();
+      if (!recordDialog.open) recordDialog.showModal();
+    });
+  });
+
+  recordClose.addEventListener('click', () => recordDialog.close());
+  // If dismissed with Escape or by tapping outside, still continue to the section.
+  recordDialog.addEventListener('click', event => { if (event.target === recordDialog) recordDialog.close(); });
+  recordDialog.addEventListener('close', () => {
+    history.replaceState(null, '', '#world-records');
+    window.requestAnimationFrame(() => recordTarget.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'start' }));
+  });
+
   // Photo viewer - accepts any provided photo including achievements
   const imageDialog = q('#imageDialog');
   const lightboxImage = q('#lightboxImage');
@@ -243,30 +289,35 @@
     currentLightboxIndex = (currentLightboxIndex + step + visibleGallery.length) % visibleGallery.length;
     displayLightbox(visibleGallery[currentLightboxIndex]);
   }
-  qa('[data-open-image]').forEach(btn => btn.addEventListener('click', () => { visibleGallery = photos.filter(p => p.category === 'Awards'); openPhoto(btn.dataset.openImage); }));
+  qa('[data-open-image]').forEach(btn => btn.addEventListener('click', () => { const chosen = photos.find(p => p.id === btn.dataset.openImage); if (!chosen) return; visibleGallery = photos.filter(p => p.category === chosen.category); openPhoto(chosen.id); }));
   q('#lightboxPrev').addEventListener('click', () => moveLightbox(-1));
   q('#lightboxNext').addEventListener('click', () => moveLightbox(1));
   q('#lightboxClose').addEventListener('click', () => imageDialog.close());
   imageDialog.addEventListener('click', e => { if (e.target === imageDialog) imageDialog.close(); });
   imageDialog.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') moveLightbox(-1); if (e.key === 'ArrowRight') moveLightbox(1); });
 
-  // Published Excel results. Real files added to project assets; nothing invented here.
+  // Published PDFs are hosted as static files. No browser-side uploads.
   const resultsNode = q('#resultsList');
-  const files = Array.isArray(window.YSCDS_EXCEL_RESULTS) ? window.YSCDS_EXCEL_RESULTS : [];
+  const files = Array.isArray(window.YSCDS_PDF_RESULTS) ? window.YSCDS_PDF_RESULTS : [];
+  const safePdfPath = /^assets\/records\/files\/[A-Za-z0-9 _().-]+\.pdf$/i;
   if (files.length) {
     resultsNode.replaceChildren();
     for (const result of files) {
-      if (!result || typeof result.title !== 'string' || typeof result.file !== 'string' || !/^assets\/records\/files\/[\w .()-]+\.xlsx?$/i.test(result.file)) continue;
+      if (!result || typeof result.title !== 'string' || typeof result.file !== 'string' || !safePdfPath.test(result.file)) continue;
       const row = document.createElement('div'); row.className = 'published-result';
-      const icon = document.createElement('span'); icon.className = 'excel-icon'; icon.textContent = 'XLS';
-      const body = document.createElement('div');
+      const icon = document.createElement('span'); icon.className = 'pdf-icon'; icon.textContent = 'PDF';
+      const body = document.createElement('div'); body.className = 'result-meta';
       const title = document.createElement('b'); title.textContent = result.title;
       const details = document.createElement('small'); details.textContent = [result.category, result.year].filter(Boolean).join(' · ');
       body.append(title, details);
-      const link = document.createElement('a'); link.href = result.file; link.download = ''; link.textContent = 'Download ↓'; link.setAttribute('aria-label', 'Download ' + result.title);
-      row.append(icon, body, link); resultsNode.append(row);
+      const actions = document.createElement('span'); actions.className = 'result-actions';
+      const view = document.createElement('a'); view.href = result.file; view.target = '_blank'; view.rel = 'noopener noreferrer'; view.textContent = 'View ↗'; view.setAttribute('aria-label', 'View ' + result.title + ' PDF');
+      const download = document.createElement('a'); download.href = result.file; download.download = ''; download.textContent = 'Download ↓'; download.setAttribute('aria-label', 'Download ' + result.title + ' PDF');
+      actions.append(view, download);
+      row.append(icon, body, actions); resultsNode.append(row);
     }
-    if (!resultsNode.children.length) resultsNode.innerHTML = '<div class="result-empty"><h3>Results will appear here</h3><p>No valid published results have been added.</p></div>';
+    if (!resultsNode.children.length) resultsNode.innerHTML = '<div class="result-empty"><h3>PDF results will appear here</h3><p>No valid published PDFs have been added.</p></div>';
   }
+
   q('#currentYear').textContent = new Date().getFullYear();
 })();
