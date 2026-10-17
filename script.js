@@ -21,10 +21,8 @@
   function closeMenu() {
     mobileMenu.classList.remove('is-open');
     header.classList.remove('menu-open');
-
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.setAttribute('aria-label', 'Open menu');
-
     mobileMenu.setAttribute('inert', '');
     document.body.style.overflow = '';
   }
@@ -32,10 +30,8 @@
   function openMenu() {
     mobileMenu.classList.add('is-open');
     header.classList.add('menu-open');
-
     menuToggle.setAttribute('aria-expanded', 'true');
     menuToggle.setAttribute('aria-label', 'Close menu');
-
     mobileMenu.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
   }
@@ -73,16 +69,13 @@
   });
 
   // ==========================================
-  // SCROLL HEADER AND PROGRESS BAR
+  // SCROLL HEADER AND PROGRESS
   // ==========================================
 
   let scrollWaiting = false;
 
   function updateScroll() {
-    header.classList.toggle(
-      'scrolled',
-      window.scrollY > 30
-    );
+    header.classList.toggle('scrolled', window.scrollY > 30);
 
     const max =
       document.documentElement.scrollHeight -
@@ -181,8 +174,7 @@
   let heroTimer;
 
   function selectHero(index) {
-    heroIndex =
-      (index + slides.length) % slides.length;
+    heroIndex = (index + slides.length) % slides.length;
 
     heroImages.forEach((image, i) => {
       image.classList.toggle(
@@ -316,19 +308,14 @@
       eventScroll.scrollBy({
         left:
           direction *
-          Math.max(
-            260,
-            eventScroll.clientWidth * 0.72
-          ),
-        behavior: reduceMotion
-          ? 'instant'
-          : 'smooth'
+          Math.max(260, eventScroll.clientWidth * 0.72),
+        behavior: reduceMotion ? 'instant' : 'smooth'
       });
     });
   }
 
   // ==========================================
-  // PHOTO GALLERY DATA
+  // GALLERY PHOTOS
   // ==========================================
 
   const folder = 'assets/images/events/';
@@ -533,7 +520,7 @@
   }));
 
   // ==========================================
-  // FEATURED GALLERY
+  // FEATURED GALLERY PHOTO
   // ==========================================
 
   let featuredIndex = 0;
@@ -646,7 +633,7 @@
   );
 
   // ==========================================
-  // GALLERY FILTERS AND SEARCH
+  // GALLERY FILTERS
   // ==========================================
 
   const galleryGrid = q('#galleryGrid');
@@ -818,119 +805,51 @@
 
   // ==========================================
   // BOOK OF WORLD RECORDS POPUP
-  // AUTOMATIC DISPLAY ON WEBSITE OPEN
+  // AUTOMATIC ON WEBSITE LOAD ONLY
   // ==========================================
 
   const recordDialog = q('#recordPosterDialog');
   const recordClose = q('#recordPosterClose');
-  const recordTarget = q('#world-records');
-
-  // True only when the visitor clicks
-  // the Book of World Records menu link.
-  let recordNavigateOnClose = false;
-
-  function openRecordPoster(navigateOnClose = false) {
-    if (!recordDialog || recordDialog.open) {
-      return;
-    }
-
-    recordNavigateOnClose = navigateOnClose;
-
-    recordDialog.showModal();
-  }
-
-  // ==========================================
-  // OPEN POPUP FROM NAVIGATION BUTTON
-  // ==========================================
-
-  qa('a[href="#world-records"]').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-
-      if (
-        mobileMenu &&
-        mobileMenu.classList.contains('is-open')
-      ) {
-        closeMenu();
-      }
-
-      // Open poster from navigation
-      openRecordPoster(true);
-    });
-  });
-
-  // ==========================================
-  // CLOSE POPUP USING X BUTTON
-  // ==========================================
-
-  if (recordClose && recordDialog) {
-    recordClose.addEventListener('click', () => {
-      recordDialog.close();
-    });
-  }
-
-  // ==========================================
-  // CLOSE POPUP BY CLICKING OUTSIDE
-  // ==========================================
 
   if (recordDialog) {
+
+    // X button closes the popup.
+    recordClose?.addEventListener('click', () => {
+      recordDialog.close();
+    });
+
+    // Clicking outside the poster also closes it.
     recordDialog.addEventListener('click', event => {
       if (event.target === recordDialog) {
         recordDialog.close();
       }
     });
 
-    // ========================================
-    // POPUP CLOSE BEHAVIOR
-    // ========================================
+    // Show the existing poster when the site opens.
+    function showWelcomeRecordPoster() {
+      window.setTimeout(() => {
+        if (!recordDialog.open) {
+          recordDialog.showModal();
+        }
+      }, 500);
+    }
 
-    recordDialog.addEventListener('close', () => {
-      // Automatic popup:
-      // Simply close and show homepage.
-      if (!recordNavigateOnClose) {
-        return;
-      }
-
-      // Menu-triggered popup:
-      // Scroll to Book of World Records.
-      recordNavigateOnClose = false;
-
-      history.replaceState(
-        null,
-        '',
-        '#world-records'
+    if (document.readyState === 'complete') {
+      showWelcomeRecordPoster();
+    } else {
+      window.addEventListener(
+        'load',
+        showWelcomeRecordPoster,
+        { once: true }
       );
-
-      window.requestAnimationFrame(() => {
-        recordTarget?.scrollIntoView({
-          behavior: reduceMotion
-            ? 'instant'
-            : 'smooth',
-          block: 'start'
-        });
-      });
-    });
+    }
   }
 
-  // ==========================================
-  // AUTOMATIC POPUP ON PAGE LOAD
-  // ==========================================
-
-  function showWelcomeRecordPoster() {
-    window.setTimeout(() => {
-      openRecordPoster(false);
-    }, 500);
-  }
-
-  if (document.readyState === 'complete') {
-    showWelcomeRecordPoster();
-  } else {
-    window.addEventListener(
-      'load',
-      showWelcomeRecordPoster,
-      { once: true }
-    );
-  }
+  // IMPORTANT:
+  // No click handler for a[href="#world-records"].
+  // Clicking Book of World Records in the navigation
+  // goes DIRECTLY to the section.
+  // It does NOT open the popup.
 
   // ==========================================
   // PHOTO LIGHTBOX
