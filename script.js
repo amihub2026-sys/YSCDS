@@ -1042,7 +1042,7 @@
     if (!resultsNode.children.length) {
       resultsNode.innerHTML =
         '<div class="result-empty">' +
-        '<h3>PDF results will appear here</h3>' +
+        '<h3>Results will appear here</h3>' +
         '<p>No valid published PDFs have been added.</p>' +
         '</div>';
     }
