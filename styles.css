@@ -58,22 +58,442 @@
 .world-record-note p{margin:0;flex:1;color:var(--muted);font-size:.8rem;line-height:1.6}
 .world-record-note a{font-weight:800;color:var(--navy);font-size:.78rem;white-space:nowrap}
 /* Book of World Records poster dialog: click X -> scroll to world records. */
-.record-poster-dialog{position:fixed;inset:0;margin:auto;padding:0;width:min(550px,calc(100vw - 34px));max-width:550px;max-height:calc(100dvh - 30px);border:1px solid rgba(255,255,255,.12);border-radius:22px;background:#081a35;color:#fff;box-shadow:0 28px 90px #010817a8;overflow:hidden}
-.record-poster-dialog::backdrop{background:rgba(0,9,26,.78);backdrop-filter:blur(6px)}
-.record-poster-frame{position:relative;padding:0;overflow:hidden}
-.record-poster-art{height:min(680px,calc(100dvh - 30px));min-height:350px;position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;padding:28px 30px 36px}
-.record-poster-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:-2}
-.record-poster-art::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,12,27,.78) 0%,rgba(4,12,27,.04) 35%,rgba(4,12,27,.9) 100%)}
-.record-poster-brand{display:flex;align-items:center;gap:12px;font-size:.75rem;font-weight:800;letter-spacing:.18em}
-.record-poster-brand img{width:58px;height:58px;object-fit:contain}
-.record-poster-text{margin-top:auto;padding:30px 0 12px}
-.record-poster-text>span{color:#ffb879;font-size:.72rem;font-weight:800;letter-spacing:.15em}
-.record-poster-text h2{font-size:clamp(2.4rem,7vw,4.1rem);line-height:1.01;color:#fff;letter-spacing:-.055em;margin:17px 0 15px}
-.record-poster-text h2 em{font-style:normal;color:#ff9d57;display:block}
-.record-poster-text p{font-size:1rem;line-height:1.55;color:#eff5ff;margin:0}
-.record-poster-hint{align-self:flex-start;font-size:.75rem;font-weight:700;background:rgba(7,20,40,.6);border:1px solid #ffffff59;padding:9px 12px;border-radius:10px;margin-top:22px}
-.record-poster-close{position:absolute;right:14px;top:14px;z-index:2;background:#fff;color:#09213d;width:44px;height:44px;border:0;border-radius:50%;font-size:1.8rem;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.22)}
-.record-poster-close:hover{background:#ff9d57}
+
+/* BOOK OF WORLD RECORDS - FULL POSTER POPUP */
+
+.record-poster-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  width: min(550px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.record-poster-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+.record-poster-frame {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
+
+.record-poster-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: #fff;
+}
+
+/* SHOW THE ENTIRE POSTER WITHOUT CROPPING */
+
+.record-poster-photo {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 24px);
+  object-fit: contain;
+  object-position: center;
+  z-index: auto;
+}
+
+/* REMOVE DARK OVERLAY */
+
+.record-poster-art::before {
+  content: none;
+}
+
+/* CLOSE BUTTON */
+
+.record-poster-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  color: #081a35;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.record-poster-close:hover {
+  background: #ff761e;
+  color: #fff;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+  .record-poster-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 12px;
+  }
+
+  .record-poster-photo {
+    max-height: calc(100dvh - 20px);
+    object-fit: contain;
+  }
+
+  .record-poster-close {
+    width: 38px;
+    height: 38px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* POSTER POPUP - CLOSE BUTTON OUTSIDE IMAGE */
+
+.record-poster-dialog {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.record-poster-frame {
+  position: relative;
+  padding-top: 56px;
+  overflow: visible;
+}
+
+.record-poster-art {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.record-poster-photo {
+  max-height: calc(100dvh - 90px);
+  object-fit: contain;
+}
+
+.record-poster-close {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  color: #081a35;
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .record-poster-frame {
+    padding-top: 52px;
+  }
+
+  .record-poster-close {
+    top: 4px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .record-poster-photo {
+    max-height: calc(100dvh - 82px);
+  }
+}
+
+/* BOOK OF WORLD RECORDS - MAIN POSTER */
+
+.world-records-main-poster {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto 40px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.world-records-main-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+  .world-records-main-poster {
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .world-records-main-poster {
+    max-width: 100%;
+    margin-bottom: 24px;
+    border-radius: 12px;
+  }
+
+  .world-records-main-poster img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
+/* =========================================
+   YSCDS - WORLD RECORDS FEATURE SECTION
+   DESKTOP + TABLET + MOBILE
+========================================= */
+
+.world-records-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 80px);
+  margin: 35px 0 55px;
+}
+
+/* LEFT - POSTER */
+
+.world-records-feature .world-records-main-poster {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 55px rgba(8, 26, 53, 0.13);
+}
+
+.world-records-main-poster a {
+  display: block;
+  text-align: center;
+}
+
+.world-records-feature .world-records-main-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 570px;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.world-records-main-poster a:hover img {
+  transform: scale(1.015);
+}
+
+/* RIGHT - EVENT CONTENT */
+
+.world-records-feature-content {
+  min-width: 0;
+  padding: 10px 0;
+}
+
+.world-records-feature-content h3 {
+  font-size: clamp(30px, 3.3vw, 52px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: #081a35;
+  margin: 20px 0;
+}
+
+.world-records-feature-content h3 span {
+  display: block;
+  color: #ff761e;
+}
+
+.world-records-feature-content > p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #65738a;
+  margin: 0 0 28px;
+  max-width: 540px;
+}
+
+/* EVENT INFORMATION */
+
+.world-records-event-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.world-records-event-details > div {
+  padding: 18px;
+  border: 1px solid #e5ebf3;
+  border-radius: 13px;
+  background: #f8faff;
+}
+
+.world-records-event-details strong {
+  display: block;
+  color: #ff761e;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.world-records-event-details span {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #10213e;
+}
+
+/* TABLET */
+
+@media (max-width: 991px) {
+  .world-records-feature {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 28px;
+  }
+
+  .world-records-event-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .world-records-feature {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin: 25px 0 40px;
+  }
+
+  .world-records-feature .world-records-main-poster {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    border-radius: 14px;
+  }
+
+  .world-records-feature .world-records-main-poster img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .world-records-feature-content {
+    padding: 0;
+  }
+
+  .world-records-feature-content h3 {
+    font-size: clamp(28px, 7vw, 38px);
+    margin: 14px 0;
+  }
+
+  .world-records-feature-content > p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .world-records-event-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .world-records-event-details > div {
+    padding: 13px;
+  }
+
+  .world-records-event-details span {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+
+  .world-records-feature-content .button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .world-records-event-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* BIGGER LOGO - SAME NAVBAR HEIGHT */
+
+.site-header .brand img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  transform: scale(1.25);
+  transform-origin: center;
+}
+
+.site-header .brand {
+  gap: 19px;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .site-header .brand img {
+    width: 80px;
+    height: 80px;
+    transform: scale(1.15);
+  }
+
+  .site-header .brand {
+    gap: 15px;
+  }
+}
+
+
+/* AMI HUB FOOTER CREDIT */
+.footer-credit {
+  font-size: 13px;
+  color: #a9c5e7;
+}
+
+.footer-credit a {
+  color: #ff761e;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.footer-credit a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+
 /* PDF RESULTS */
 .results-section{background:linear-gradient(135deg,#fff1f1,#f6f9fd)}
 .result-points span{color:#a62d2d}
