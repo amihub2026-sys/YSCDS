@@ -327,6 +327,12 @@
       'Silambam',
       'Participants practicing with staffs at an outdoor gathering'
     ],
+     [
+      'yscds1.jpeg',
+      'Student Silambam practice',
+      'Silambam',
+      'Participants practicing with staffs at an outdoor gathering'
+    ],
     [
       'classical-dance-stage',
       'Young classical performers',
@@ -370,6 +376,43 @@
       'Participants at a cultural recognition event'
     ],
     [
+      'stuaward1.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+     [
+      'stuaward2.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+     [
+      'stuaward3.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+     [
+      'stuaward4.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+   
+     [
+      'stuaward6.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+     [
+      'stuaward7.jpeg',
+      'Stage recognition',
+      'Awards',
+      'Participants at a cultural recognition event'
+    ],
+    [
       'decorative-cultural-procession',
       'A vibrant cultural procession',
       'Events',
@@ -401,6 +444,12 @@
     ],
     [
       'students-percussion-training',
+      'The next rhythm',
+      'Music',
+      'Students with drums during a training session'
+    ],
+     [
+      'music1.jpeg',
       'The next rhythm',
       'Music',
       'Students with drums during a training session'
